@@ -1,5 +1,4 @@
 node_modules
-.env
-release-builds/
-25 Minutes.dmg
-.dmg
+*.env
+release-builds
+*.dmg
