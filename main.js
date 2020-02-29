@@ -2,17 +2,20 @@ const { app, ipcMain } = require('electron');
 app.allowRendererProcessReuse = true;
 require('electron-reload')(__dirname);
 
-const buildWindow = require('./src/js/window.js');
-const buildAlarmWindow = require('./src/js/alarmWindow.js');
+const mainWindowBuilder = require('./src/js/mainWindow.js');
+const alarmWindow = require('./src/js/alarmWindow.js');
 const buildTray = require('./src/js/tray.js');
 
+app.dock.hide();
 app.on('ready', () => {
-  const window = buildWindow();
-  buildTray(window);
+  const mainWindow = mainWindowBuilder.build();
+  buildTray(mainWindow, app.quit);
 });
 
 ipcMain.on('show-timer-done', function(event, data) {
-  buildAlarmWindow();
+  alarmWindow.build();
 });
 
-ipcMain.s;
+ipcMain.on('close-timer-window', function(event, data) {
+  alarmWindow.close();
+});

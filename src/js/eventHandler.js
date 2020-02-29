@@ -42,7 +42,7 @@ function formatInput() {
 }
 
 function clearInput() {
-  this.value = '';
+  if (!larmTime) this.value = '';
 }
 
 function fillInput() {
@@ -53,6 +53,8 @@ function fillInput() {
 function stopTimer() {
   minutesField.readOnly = '';
   secondsField.readOnly = '';
+  minutesField.className = '';
+  secondsField.className = '';
   stopIcon.className = 'invis';
   playIcon.className = '';
   clearTimeout(ticker);
@@ -67,6 +69,8 @@ function startTimer() {
   secondsField.readOnly = 'readOnly';
   stopIcon.className = '';
   playIcon.className = 'invis';
+  minutesField.className = 'not-allowed';
+  secondsField.className = 'not-allowed';
   minutesLeft = parseInt(
     minutesField.value > 0 || edited ? minutesField.value : minutes,
     10
@@ -78,6 +82,9 @@ function startTimer() {
   larmTime = Date.now() + (minutesLeft * 60 + secondsLeft) * 1000 + 200;
   updateClock();
   edited = false;
+  //   setTimeout(() => {
+  //     closeTimerWindow();
+  //   }, 2000);
 }
 
 function updateClock() {
@@ -114,3 +121,6 @@ function renderTime() {
 function showTimerDone() {
   ipcRenderer.send('show-timer-done');
 }
+
+// function closeTimerWindow() {
+// }

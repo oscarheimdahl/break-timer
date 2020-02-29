@@ -2,7 +2,7 @@ const { BrowserWindow } = require('electron');
 
 let window = null;
 
-function buildWindow(x) {
+function build(x) {
   if (window) {
     window.hide();
     return;
@@ -22,6 +22,7 @@ function buildWindow(x) {
     show: false,
     alwaysOnTop: true
   });
+  window.setVisibleOnAllWorkspaces(true);
   //   window.webContents.openDevTools();
   window.on('blur', function() {
     window.hide();
@@ -34,4 +35,4 @@ function buildWindow(x) {
   return window;
 }
 
-module.exports = buildWindow;
+module.exports = { build };

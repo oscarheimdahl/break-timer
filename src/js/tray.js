@@ -1,15 +1,21 @@
-const { Tray, Menu, nativeImage } = require('electron');
+const { Tray, Menu, nativeImage, screen } = require('electron');
 const path = require('path');
 const iconPath = path.join(__dirname, '../../resources/25.png');
 
 let tray = null;
 
-function buildTray(window) {
+function buildTray(window, quit) {
   tray = new Tray(nativeImage.createFromPath(iconPath));
-  tray.setToolTip('Timer');
+  tray.setToolTip('Right click to quit');
   tray.on('click', function(event, bounds, pos) {
     setWindowPos(bounds, window);
     toggleWindow(window);
+
+    // const screenPos = screen.getCursorScreenPoint();
+    // console.log(screen.getDisplayNearestPoint(screenPos).workArea);
+  });
+  tray.on('right-click', function(event, bounds, pos) {
+    quit();
   });
 }
 
@@ -24,7 +30,7 @@ function toggleWindow(window) {
 function setWindowPos(iconBounds, window) {
   const iconCenter = iconBounds.x + iconBounds.width / 2;
   const windowWidth = window.getBounds().width;
-  window.setPosition(iconCenter - windowWidth / 2, 30);
+  window.setPosition(Math.floor(iconCenter - windowWidth / 2), 30);
 }
 
 module.exports = buildTray;

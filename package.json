@@ -1,16 +1,21 @@
 {
-  "name": "break-timer",
+  "name": "breaktimer25",
+  "productName": "25 Minutes",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron main.js"
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=resources/icon.icns --prune=true --out=release-builds",
+    "installer-mac": "electron-installer-dmg ./release-builds/25\\ Minutes-darwin-x64/25\\ Minutes.app 25\\ Minutes --icon=resources/icon.icns"
   },
-  "author": "",
+  "author": "Oscar Heimdahl",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^8.0.2"
+    "electron": "^8.0.2",
+    "electron-installer-dmg": "^3.0.0",
+    "electron-packager": "^14.2.1"
   },
   "dependencies": {
     "electron-reload": "^1.5.0",

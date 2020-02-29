@@ -2,7 +2,7 @@ const { BrowserWindow } = require('electron');
 
 let window = null;
 
-function buildAlarmWindow(x) {
+function build(x) {
   window = new BrowserWindow({
     width: 500,
     height: 300,
@@ -12,13 +12,17 @@ function buildAlarmWindow(x) {
     },
     skipTaskbar: true,
     frame: false,
+    show: false,
     alwaysOnTop: true
   });
+
+  window.setVisibleOnAllWorkspaces(true);
   //   window.webContents.openDevTools();
-  window.on('blur', function() {
-    window.close();
-    window = null;
-  });
+
+  //   window.on('blur', function() {
+  //     window.close();
+  //     window = null;
+  //   });
 
   window.loadFile('src/alarm.html');
   window.once('ready-to-show', () => {
@@ -27,4 +31,9 @@ function buildAlarmWindow(x) {
   return window;
 }
 
-module.exports = buildAlarmWindow;
+function close() {
+  window.close();
+  window = null;
+}
+
+module.exports = { build, close };

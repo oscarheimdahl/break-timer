@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   font-family: 'Lato';
+  font-weight: 300;
 }
 
 .wrapper {
@@ -40,8 +41,12 @@ input {
   border: none;
   overflow: hidden;
   /* background: red; */
-  /* background: green; */
+  background: transparent;
   text-align: center;
+}
+
+.not-allowed {
+  cursor: not-allowed;
 }
 
 input::-webkit-outer-spin-button,
@@ -55,11 +60,11 @@ input:focus {
 }
 
 .toggle {
-  border-radius: 10px;
-  /* background: lightcyan; */
-  border: solid black 1px;
-  width: 35px;
-  height: 35px;
+  border-radius: 1000px;
+  width: 33px;
+  height: 33px;
+  padding-top: 3px;
+  padding-left: 3px;
   display: grid;
   justify-content: center;
   align-content: center;
@@ -67,8 +72,10 @@ input:focus {
 
 .toggle > img {
   position: absolute;
-  width: 35px;
-  /* transition-duration: 2000ms; */
+  width: 27px;
+  padding: 3px;
+  border-radius: 1000px;
+  box-shadow: 0 4px 12px 0px #888;
 }
 
 .invis {
