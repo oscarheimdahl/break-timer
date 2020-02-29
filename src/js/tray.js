@@ -1,4 +1,4 @@
-const { Tray, Menu, nativeImage, screen } = require('electron');
+const { Tray, Menu, nativeImage, MenuItem, screen } = require('electron');
 const path = require('path');
 const iconPath = path.join(__dirname, '../../resources/25.png');
 
@@ -6,7 +6,7 @@ let tray = null;
 
 function buildTray(window, quit) {
   tray = new Tray(nativeImage.createFromPath(iconPath));
-  tray.setToolTip('Right click to quit');
+  buildMenu(quit);
   tray.on('click', function(event, bounds, pos) {
     setWindowPos(bounds, window);
     toggleWindow(window);
@@ -14,9 +14,16 @@ function buildTray(window, quit) {
     // const screenPos = screen.getCursorScreenPoint();
     // console.log(screen.getDisplayNearestPoint(screenPos).workArea);
   });
-  tray.on('right-click', function(event, bounds, pos) {
+}
+
+function buildMenu(quit) {
+  let quitButton = new MenuItem({ label: 'quit' });
+  quitButton.click = function() {
     quit();
-  });
+  };
+  let contextMenu = new Menu();
+  contextMenu.append(quitButton);
+  tray.setContextMenu(contextMenu);
 }
 
 function toggleWindow(window) {
@@ -28,9 +35,14 @@ function toggleWindow(window) {
 }
 
 function setWindowPos(iconBounds, window) {
+  const screenWidth = screen.getPrimaryDisplay().workAreaSize.width;
   const iconCenter = iconBounds.x + iconBounds.width / 2;
   const windowWidth = window.getBounds().width;
-  window.setPosition(Math.floor(iconCenter - windowWidth / 2), 30);
+  let windowX = Math.floor(iconCenter - windowWidth / 2);
+  if (windowX + windowWidth > screenWidth) {
+    windowX = screenWidth - windowWidth - 30;
+  }
+  window.setPosition(windowX, 30);
 }
 
 module.exports = buildTray;
