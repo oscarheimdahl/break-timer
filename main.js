@@ -6,7 +6,10 @@ const mainWindowBuilder = require('./src/js/mainWindow.js');
 const alarmWindow = require('./src/js/alarmWindow.js');
 const buildTray = require('./src/js/tray.js');
 
-app.dock.hide();
+if (process.platform === 'darwin') {
+  app.dock.hide();
+}
+
 app.on('ready', () => {
   const mainWindow = mainWindowBuilder.build();
   buildTray(mainWindow, app.quit);

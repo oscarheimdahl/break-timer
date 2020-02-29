@@ -2,20 +2,22 @@
   "name": "breaktimer25",
   "productName": "25 Minutes",
   "version": "1.0.0",
-  "description": "",
+  "description": "Timer application to help you take frequent breaks.",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=resources/icon.icns --prune=true --out=release-builds",
-    "installer-mac": "electron-installer-dmg ./release-builds/25\\ Minutes-darwin-x64/25\\ Minutes.app 25\\ Minutes --icon=resources/icon.icns"
+    "installer-mac": "electron-installer-dmg ./release-builds/25\\ Minutes-darwin-x64/25\\ Minutes.app 25\\ Minutes --icon=resources/icon.icns",
+    "package-windows": "electron-packager . 25-Minutes --overwrite --asar=true --platform=win32 --arch=ia32 --icon=resources/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"25-Minutes\""
   },
   "author": "Oscar Heimdahl",
   "license": "ISC",
   "devDependencies": {
     "electron": "^8.0.2",
     "electron-installer-dmg": "^3.0.0",
-    "electron-packager": "^14.2.1"
+    "electron-packager": "^14.2.1",
+    "electron-winstaller": "^4.0.0"
   },
   "dependencies": {
     "electron-reload": "^1.5.0",
