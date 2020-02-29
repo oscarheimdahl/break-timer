@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BreakTimer</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="time-wrapper">
+        <input type="number" class="minutes-field" min="0" />
+        <span class="spacer">:</span>
+        <input type="number" class="seconds-field" min="0" />
+      </div>
+      <!-- <div class="time">25:00</div> -->
+      <div class="toggle">
+        <img id="play-icon" src="../resources/play.svg" alt="start" />
+        <img
+          id="stop-icon"
+          class="invis"
+          src="../resources/stop.svg"
+          alt="start"
+        />
+      </div>
+    </div>
+    <script>
+      require('./js/eventHandler.js');
+    </script>
+  </body>
+</html>

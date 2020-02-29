@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrapper-break">
+      <h1>Time for a break.</h1>
+      <br />
+      <h3 id="message"></h3>
+    </div>
+    <script>
+      const messages = [
+        'Good work, time for a break.',
+        'How about some squats?',
+        '5 push ups coming up?!',
+        'Drink some water!',
+        'COOOOOFFEEEEEE',
+        'Do some jumping jacks or something'
+      ];
+      function setH2() {
+        document.getElementById('message').innerHTML =
+          messages[Math.floor(Math.random() * messages.length)];
+      }
+      setH2();
+    </script>
+  </body>
+</html>
