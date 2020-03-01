@@ -12,19 +12,19 @@ function build() {
       nodeIntegration: true
     },
     skipTaskbar: true,
-    // frame: false,
-    // resizable: false,
+    frame: false,
+    resizable: false,
     // show: false,
     alwaysOnTop: true
   });
 
   window.setVisibleOnAllWorkspaces(true);
-  window.webContents.openDevTools();
+  //   window.webContents.openDevTools();
 
-  //   window.on('blur', function() {
-  //     window.close();
-  //     window = null;
-  //   });
+  window.on('blur', function() {
+    window.close();
+    window = null;
+  });
 
   window.loadFile(path.join(__dirname, '../render/break.html'));
   window.once('ready-to-show', () => {
