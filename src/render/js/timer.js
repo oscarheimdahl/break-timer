@@ -89,10 +89,12 @@ function startTimer() {
     minutesField.value > 0 || edited ? minutesField.value : minutes,
     10
   );
+  if (edited) minutes = minutesLeft;
   secondsLeft = parseInt(
     secondsField.value > 0 || edited ? secondsField.value : seconds,
     10
   );
+  if (edited) seconds = secondsLeft;
   larmTime = Date.now() + (minutesLeft * 60 + secondsLeft) * 1000 + 200;
   updateClock();
   edited = false;

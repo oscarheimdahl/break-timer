@@ -45,3 +45,7 @@ ipcMain.on('toggle-sound', function(event, data) {
 ipcMain.on('sound-query', function(event, data) {
   if (sound) breakWindowInstance.webContents.send('play-sound');
 });
+
+ipcMain.on('clg', function(event, data) {
+  console.log(data.data);
+});

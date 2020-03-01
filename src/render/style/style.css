@@ -135,7 +135,7 @@ input:focus {
 #sound-on {
   /* position: absolute; */
   width: 15px;
-
+  cursor: pointer;
   /* background: red; */
 }
 
