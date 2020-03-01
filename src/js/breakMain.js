@@ -1,8 +1,9 @@
 const { BrowserWindow } = require('electron');
+const path = require('path');
 
 let window = null;
 
-function build(x) {
+function build() {
   window = new BrowserWindow({
     width: 500,
     height: 300,
@@ -11,20 +12,21 @@ function build(x) {
       nodeIntegration: true
     },
     skipTaskbar: true,
-    frame: false,
-    show: false,
+    // frame: false,
+    // resizable: false,
+    // show: false,
     alwaysOnTop: true
   });
 
   window.setVisibleOnAllWorkspaces(true);
-  //   window.webContents.openDevTools();
+  window.webContents.openDevTools();
 
   //   window.on('blur', function() {
   //     window.close();
   //     window = null;
   //   });
 
-  window.loadFile('src/alarm.html');
+  window.loadFile(path.join(__dirname, '../render/break.html'));
   window.once('ready-to-show', () => {
     window.show(true);
   });

@@ -1,4 +1,5 @@
 const { BrowserWindow } = require('electron');
+const path = require('path');
 
 let window = null;
 
@@ -19,8 +20,9 @@ function build(x) {
     },
     skipTaskbar: true,
     frame: false,
-    show: false,
-    alwaysOnTop: true
+    resizable: false,
+    alwaysOnTop: true,
+    show: false
   });
   window.setVisibleOnAllWorkspaces(true);
   //   window.webContents.openDevTools();
@@ -28,7 +30,7 @@ function build(x) {
     window.hide();
   });
 
-  window.loadFile('src/index.html');
+  window.loadFile(path.join(__dirname, '../render/timer.html'));
   window.once('ready-to-show', () => {
     // window.show(true);
   });

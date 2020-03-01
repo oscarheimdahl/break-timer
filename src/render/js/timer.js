@@ -1,9 +1,9 @@
 const { ipcRenderer } = require('electron');
-const toggle = document.getElementsByClassName('toggle')[0];
 const minutesField = document.getElementsByClassName('minutes-field')[0];
 const secondsField = document.getElementsByClassName('seconds-field')[0];
 const stopIcon = document.getElementById('stop-icon');
 const playIcon = document.getElementById('play-icon');
+const toggleTimer = document.getElementById('toggle-timer');
 
 let edited = false;
 
@@ -17,7 +17,7 @@ let ticker;
 
 renderTime();
 
-toggle.addEventListener('click', function() {
+toggleTimer.addEventListener('click', function() {
   if (!larmTime) {
     startTimer();
   } else {
@@ -27,10 +27,8 @@ toggle.addEventListener('click', function() {
 
 minutesField.addEventListener('input', formatInput);
 secondsField.addEventListener('input', formatInput);
-
 minutesField.addEventListener('click', clearInput);
 secondsField.addEventListener('click', clearInput);
-
 minutesField.addEventListener('blur', fillInput);
 secondsField.addEventListener('blur', fillInput);
 
@@ -119,8 +117,13 @@ function renderTime() {
 }
 
 function showTimerDone() {
-  ipcRenderer.send('show-timer-done');
+  ipcRenderer.send('show-break-window');
 }
+
+ipcRenderer.on('restart-timer', function() {
+  larmTime = null;
+  startTimer();
+});
 
 // function closeTimerWindow() {
 // }

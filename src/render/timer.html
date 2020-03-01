@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./style/style.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Lato:300,400&display=swap"
       rel="stylesheet"
@@ -18,18 +18,18 @@
         <input type="number" class="seconds-field" min="0" />
       </div>
       <!-- <div class="time">25:00</div> -->
-      <div class="toggle">
-        <img id="play-icon" src="../resources/play.svg" alt="start" />
+      <div class="round-button" id="toggle-timer">
+        <img id="play-icon" src="../../resources/play.svg" alt="start" />
         <img
           id="stop-icon"
           class="invis"
-          src="../resources/stop.svg"
+          src="../../resources/stop.svg"
           alt="start"
         />
       </div>
     </div>
     <script>
-      require('./js/eventHandler.js');
+      require('./js/timer.js');
     </script>
   </body>
 </html>

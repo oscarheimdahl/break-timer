@@ -6,6 +6,7 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "nodemon --watch * --exec \"electron .\"",
     "start": "electron .",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=resources/icon.icns --prune=true --out=release-builds",
     "installer-mac": "electron-installer-dmg ./release-builds/25\\ Minutes-darwin-x64/25\\ Minutes.app 25\\ Minutes --icon=resources/icon.icns",

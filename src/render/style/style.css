@@ -59,7 +59,7 @@ input:focus {
   outline: none;
 }
 
-.toggle {
+.round-button {
   border-radius: 1000px;
   width: 33px;
   height: 33px;
@@ -70,7 +70,7 @@ input:focus {
   align-content: center;
 }
 
-.toggle > img {
+.round-button > img {
   position: absolute;
   width: 27px;
   padding: 3px;
@@ -83,13 +83,21 @@ input:focus {
 }
 
 .wrapper-break {
+  /* background-color: red; */
   display: flex;
   width: 90%;
   height: 60vh;
-  justify-content: center;
+  justify-content: space-evenly;
   align-content: center;
   align-items: center;
-  padding: 20vh 5% 20vh 5%;
+  margin: 20vh 5%;
   flex-direction: column;
+}
+
+.button-row {
+  padding-top: 10px;
+  display: flex;
   /* background: red; */
+  width: 110px;
+  justify-content: space-between;
 }
