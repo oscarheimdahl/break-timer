@@ -8,7 +8,7 @@ function build(x) {
     window.hide();
     return;
   }
-  let width = 200;
+  let width = 220;
   window = new BrowserWindow({
     width,
     height: 80,

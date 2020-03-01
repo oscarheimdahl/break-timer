@@ -2,11 +2,12 @@ const { BrowserWindow } = require('electron');
 const path = require('path');
 
 let window = null;
+let on = null;
 
-function build() {
+function build(playSound) {
   window = new BrowserWindow({
-    width: 500,
-    height: 300,
+    width: 400,
+    height: 250,
     opacity: 0.9,
     webPreferences: {
       nodeIntegration: true
@@ -14,7 +15,6 @@ function build() {
     skipTaskbar: true,
     frame: false,
     resizable: false,
-    // show: false,
     alwaysOnTop: true
   });
 
@@ -28,7 +28,8 @@ function build() {
 
   window.loadFile(path.join(__dirname, '../render/break.html'));
   window.once('ready-to-show', () => {
-    window.show(true);
+    win.show();
+    // win
   });
   return window;
 }
@@ -38,4 +39,8 @@ function close() {
   window = null;
 }
 
-module.exports = { build, close };
+function getWindow() {
+  return window;
+}
+
+module.exports = { build, close, getWindow };

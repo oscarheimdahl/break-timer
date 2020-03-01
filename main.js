@@ -12,6 +12,10 @@ const timerWindow = require('./src/js/timerMain.js');
 const breakWindow = require('./src/js/breakMain.js');
 const buildTray = require('./src/js/trayMain.js');
 let timerWindowInstance = null;
+let breakWindowInstance = null;
+
+let sound = true;
+
 if (process.platform === 'darwin') {
   app.dock.hide();
 }
@@ -23,7 +27,7 @@ app.on('ready', () => {
 });
 
 ipcMain.on('show-break-window', function(event, data) {
-  breakWindow.build();
+  breakWindowInstance = breakWindow.build(sound);
 });
 
 ipcMain.on('close-break-window', function(event, data) {
@@ -32,4 +36,12 @@ ipcMain.on('close-break-window', function(event, data) {
 
 ipcMain.on('restart-timer', function(event, data) {
   timerWindowInstance.webContents.send('restart-timer');
+});
+
+ipcMain.on('toggle-sound', function(event, data) {
+  sound = data.sound;
+});
+
+ipcMain.on('sound-query', function(event, data) {
+  if (sound) breakWindowInstance.webContents.send('play-sound');
 });

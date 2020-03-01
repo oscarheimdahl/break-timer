@@ -3,6 +3,8 @@ const minutesField = document.getElementsByClassName('minutes-field')[0];
 const secondsField = document.getElementsByClassName('seconds-field')[0];
 const stopIcon = document.getElementById('stop-icon');
 const playIcon = document.getElementById('play-icon');
+const soundOnIcon = document.getElementById('sound-on');
+const soundOffIcon = document.getElementById('sound-off');
 const toggleTimer = document.getElementById('toggle-timer');
 
 let edited = false;
@@ -24,6 +26,20 @@ toggleTimer.addEventListener('click', function() {
     stopTimer();
   }
 });
+
+soundOnIcon.addEventListener('click', toggleSound);
+soundOffIcon.addEventListener('click', toggleSound);
+
+function toggleSound(event) {
+  this.className = 'hide-sound';
+  let sound = this.id === 'sound-off';
+  if (sound) {
+    soundOnIcon.className = '';
+  } else {
+    soundOffIcon.className = '';
+  }
+  ipcRenderer.send('toggle-sound', { sound });
+}
 
 minutesField.addEventListener('input', formatInput);
 secondsField.addEventListener('input', formatInput);

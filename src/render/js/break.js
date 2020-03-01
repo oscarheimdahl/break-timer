@@ -1,5 +1,5 @@
 const { ipcRenderer } = require('electron');
-
+const path = require('path');
 const messages = [
   "You'll work better if you take a break.",
   'Do some jumping jacks or something',
@@ -21,11 +21,14 @@ document.getElementById('message').innerHTML =
 
 document.getElementById('restart-timer').addEventListener('click', function() {
   ipcRenderer.send('restart-timer');
+});
+
+document.getElementById('break-window').addEventListener('click', function() {
+  // ipcRenderer.send('restart-timer');
   ipcRenderer.send('close-break-window');
 });
 
-document
-  .getElementById('close-break-window')
-  .addEventListener('click', function() {
-    ipcRenderer.send('close-break-window');
-  });
+ipcRenderer.send('sound-query');
+ipcRenderer.on('play-sound', function() {
+  document.getElementById('notification').play();
+});

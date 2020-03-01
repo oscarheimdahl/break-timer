@@ -11,16 +11,14 @@
     <title>Document</title>
   </head>
   <body id="break-window">
+    <audio id="notification">
+      <source src="../../resources/notification.mp3" />
+    </audio>
     <div class="wrapper-break">
       <h1>Time for a break.</h1>
       <h3 id="message"></h3>
-      <div class="button-row">
-        <div class="round-button" id="restart-timer">
-          <img id="play-icon" src="../../resources/play.svg" alt="start" />
-        </div>
-        <div class="round-button" id="close-break-window">
-          <img id="play-icon" src="../../resources/stop.svg" alt="start" />
-        </div>
+      <div class="round-button large-button" id="restart-timer">
+        <img id="play-icon" src="../../resources/loop.svg" alt="start" />
       </div>
     </div>
     <script>
