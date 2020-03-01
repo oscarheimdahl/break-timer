@@ -6,13 +6,14 @@ let tray = null;
 
 function buildTray(window, quit) {
   tray = new Tray(nativeImage.createFromPath(iconPath));
-  buildMenu(quit);
+  //   buildMenu(quit);
+  tray.setToolTip('Right click to quit program');
   tray.on('click', function(event, bounds, pos) {
     setWindowPos(bounds, window);
     toggleWindow(window);
-
-    // const screenPos = screen.getCursorScreenPoint();
-    // console.log(screen.getDisplayNearestPoint(screenPos).workArea);
+  });
+  tray.on('right-click', function() {
+    quit();
   });
 }
 
