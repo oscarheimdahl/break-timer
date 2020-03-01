@@ -15,6 +15,7 @@ function build(playSound) {
     skipTaskbar: true,
     frame: false,
     resizable: false,
+    show: false,
     alwaysOnTop: true
   });
 
@@ -28,8 +29,7 @@ function build(playSound) {
 
   window.loadFile(path.join(__dirname, '../render/break.html'));
   window.once('ready-to-show', () => {
-    win.show();
-    // win
+    window.show();
   });
   return window;
 }
