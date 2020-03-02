@@ -2,7 +2,6 @@ const { BrowserWindow } = require('electron');
 const path = require('path');
 
 let window = null;
-let on = null;
 
 function build(playSound) {
   window = new BrowserWindow({
@@ -15,8 +14,7 @@ function build(playSound) {
     skipTaskbar: true,
     frame: false,
     // titleBarStyle: 'customButtonsOnHover',
-    // transparent: true,
-
+    transparent: true,
     resizable: false,
     show: false,
     alwaysOnTop: true
@@ -26,24 +24,15 @@ function build(playSound) {
   //   window.webContents.openDevTools();
 
   //   window.on('blur', function() {
-  //     window.close();
-  //     window = null;
+  //     window.hide();
+  //     window.webContents.send('hide');
   //   });
 
   window.loadFile(path.join(__dirname, '../render/break.html'));
-  window.once('ready-to-show', () => {
-    window.show();
-  });
+  //   window.on('ready-to-show', () => {
+  // window.show();
+  //   });
   return window;
 }
 
-function close() {
-  window.close();
-  window = null;
-}
-
-function getWindow() {
-  return window;
-}
-
-module.exports = { build, close, getWindow };
+module.exports = { build };

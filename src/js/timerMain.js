@@ -20,6 +20,7 @@ function build(x) {
     },
     skipTaskbar: true,
     frame: false,
+    transparent: true,
     resizable: false,
     alwaysOnTop: true,
     show: false

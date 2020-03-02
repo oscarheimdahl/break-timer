@@ -13,6 +13,9 @@
   align-content: center;
   align-items: center;
   padding: 20vh 5%;
+  border-radius: 5px;
+  background-color: white;
+
   /* background: red; */
 }
 
@@ -24,10 +27,6 @@
 
 :not(input) {
   user-select: none;
-}
-
-.spacer {
-  /* width: 5px; */
 }
 
 .spacer,
@@ -92,7 +91,7 @@ input:focus {
   display: flex;
   width: 90%;
   height: 60vh;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-content: center;
   align-items: center;
   margin: 20vh 5%;
@@ -100,7 +99,7 @@ input:focus {
 }
 
 .button-row {
-  padding-top: 10px;
+  padding-top: 5px;
   display: flex;
   /* background: red; */
   width: 130px;
@@ -108,7 +107,7 @@ input:focus {
 }
 
 .large-button {
-  margin-top: 20px;
+  margin-top: 10px;
   width: 50px;
   height: 50px;
   padding-top: 0;
@@ -149,5 +148,7 @@ input:focus {
   top: 0;
   height: 100vh;
   width: 100vw;
-  transition-duration: 200ms;
+  background: white;
+  opacity: 0;
+  border-radius: 5px;
 }

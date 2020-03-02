@@ -22,16 +22,20 @@ if (process.platform === 'darwin') {
 
 app.on('ready', () => {
   timerWindowInstance = timerWindow.build();
+  breakWindowInstance = breakWindow.build(sound);
+
   buildTray(timerWindowInstance, app.quit);
   //   alarmWindow.build();
 });
 
 ipcMain.on('show-break-window', function(event, data) {
-  breakWindowInstance = breakWindow.build(sound);
+  breakWindowInstance.webContents.send('show');
+  breakWindowInstance.show();
 });
 
-ipcMain.on('close-break-window', function(event, data) {
-  breakWindow.close();
+ipcMain.on('hide-break-window', function(event, data) {
+  breakWindowInstance.hide();
+  breakWindowInstance.webContents.send('hide');
 });
 
 ipcMain.on('restart-timer', function(event, data) {
