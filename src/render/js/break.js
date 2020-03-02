@@ -8,6 +8,7 @@ const messages = [
   "Isn't around lunch time?",
   'How about some squats?',
   '5 push ups coming up?!',
+  "Hey! Don't slouch!",
   'BREEEEAAAK TIMEEEE',
   'Work them calves!',
   'Drink some water!',

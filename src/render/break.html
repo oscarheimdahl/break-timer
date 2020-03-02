@@ -10,19 +10,21 @@
     />
     <title>Document</title>
   </head>
-  <body id="break-window">
-    <audio id="notification">
-      <source src="../../resources/notification.mp3" />
-    </audio>
-    <div class="wrapper-break">
-      <h1>Time for a break.</h1>
-      <h3 id="message"></h3>
-      <div class="round-button large-button" id="restart-timer">
-        <img id="play-icon" src="../../resources/loop.svg" alt="start" />
+  <body>
+    <div id="break-window">
+      <audio id="notification">
+        <source src="../../resources/notification.mp3" />
+      </audio>
+      <div class="wrapper-break">
+        <h1>Time for a break.</h1>
+        <h3 id="message"></h3>
+        <div class="round-button large-button" id="restart-timer">
+          <img id="play-icon" src="../../resources/loop.svg" alt="start" />
+        </div>
       </div>
+      <script>
+        require('./js/break.js');
+      </script>
     </div>
-    <script>
-      require('./js/break.js');
-    </script>
   </body>
 </html>

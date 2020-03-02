@@ -14,6 +14,9 @@ function build(playSound) {
     },
     skipTaskbar: true,
     frame: false,
+    // titleBarStyle: 'customButtonsOnHover',
+    // transparent: true,
+
     resizable: false,
     show: false,
     alwaysOnTop: true
@@ -22,10 +25,10 @@ function build(playSound) {
   window.setVisibleOnAllWorkspaces(true);
   //   window.webContents.openDevTools();
 
-  window.on('blur', function() {
-    window.close();
-    window = null;
-  });
+  //   window.on('blur', function() {
+  //     window.close();
+  //     window = null;
+  //   });
 
   window.loadFile(path.join(__dirname, '../render/break.html'));
   window.once('ready-to-show', () => {
