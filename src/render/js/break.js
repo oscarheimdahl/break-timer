@@ -40,11 +40,10 @@ ipcRenderer.on('show', function() {
   setTimeout(() => {
     ipcRenderer.send('sound-query');
     document.getElementById('break-window').style['opacity'] = '1';
-  }, 3000);
+  }, 1000);
 });
 
 ipcRenderer.on('hide', function() {
   document.getElementById('break-window').style['transition-duration'] = '0ms';
   document.getElementById('break-window').style['opacity'] = '0';
-  document.getElementById('break-window').style['background-color'] = 'red';
 });

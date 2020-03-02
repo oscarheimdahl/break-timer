@@ -35,7 +35,7 @@ ipcMain.on('show-break-window', function(event, data) {
 
 ipcMain.on('hide-break-window', function(event, data) {
   breakWindowInstance.hide();
-  breakWindowInstance.webContents.send('hide');
+  //   breakWindowInstance.webContents.send('hide');
 });
 
 ipcMain.on('restart-timer', function(event, data) {
