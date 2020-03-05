@@ -30,12 +30,11 @@ app.on('ready', () => {
 
 ipcMain.on('show-break-window', function(event, data) {
   breakWindowInstance.webContents.send('show');
-  breakWindowInstance.show();
+  setTimeout(() => breakWindowInstance.show(), 300);
 });
 
 ipcMain.on('hide-break-window', function(event, data) {
   breakWindowInstance.hide();
-  //   breakWindowInstance.webContents.send('hide');
 });
 
 ipcMain.on('restart-timer', function(event, data) {

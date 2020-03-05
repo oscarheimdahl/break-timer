@@ -24,8 +24,6 @@ document.getElementById('restart-timer').addEventListener('click', function() {
 
 document.getElementById('break-window').addEventListener('click', function() {
   ipcRenderer.send('hide-break-window');
-  document.getElementById('break-window').style['transition-duration'] = '0ms';
-  document.getElementById('break-window').style['opacity'] = '0';
 });
 
 ipcRenderer.on('play-sound', function() {
@@ -35,15 +33,7 @@ ipcRenderer.on('play-sound', function() {
 ipcRenderer.on('show', function() {
   document.getElementById('message').innerHTML =
     messages[Math.floor(Math.random() * messages.length)];
-  document.getElementById('break-window').style['transition-duration'] =
-    '500ms';
-  setTimeout(() => {
-    ipcRenderer.send('sound-query');
-    document.getElementById('break-window').style['opacity'] = '1';
-  }, 1000);
+  ipcRenderer.send('sound-query');
 });
 
-ipcRenderer.on('hide', function() {
-  document.getElementById('break-window').style['transition-duration'] = '0ms';
-  document.getElementById('break-window').style['opacity'] = '0';
-});
+// ipcRenderer.on('hide', function() {});

@@ -149,6 +149,6 @@ input:focus {
   height: 100vh;
   width: 100vw;
   background: white;
-  opacity: 0;
+  /* opacity: 0; */
   border-radius: 5px;
 }
